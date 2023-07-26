@@ -1,0 +1,9 @@
+.book{
+    width: 50px;
+    height: 50px;
+    margin: 0;
+}
+
+.book-shelf{
+    display: flex;
+}
