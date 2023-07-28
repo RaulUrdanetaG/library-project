@@ -7,16 +7,23 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <form id="input-book-form" action="">
-        <input type="text" name="book-name" id="book-name" autocomplete="off" required>
-        <input type="text" name="book-author" id="book-author" autocomplete="off" required>
-        <input type="number" name="book-pages" id="book-pages" autocomplete="off" required>
-        <input type="checkbox" name="book-read" id="book-read">
-        <button id="add-button">Add Book +</button>
-    </form>
 
-    <div class="book-shelf" id="book-shelf">
-
+    <div class="main-container">
+        <h1>Library</h1>
+        <form id="input-book-form" action="">
+            <input type="text" name="book-name" id="book-name" autocomplete="off" placeholder="Title" required>
+            <input type="text" name="book-author" id="book-author" autocomplete="off" placeholder="Author" required>
+            <input type="number" name="book-pages" id="book-pages" autocomplete="off" placeholder="Number of pages" required>
+            <input type="checkbox" name="book-read" id="book-read">
+            <button id="add-button">Add Book +</button>
+        </form>
+        <div class="book-shelf" id="book-shelf">
+        </div>
+        <div class="creator-info">
+            <h3>Made by </h3>
+            <a href="https://github.com/RaulUrdanetaG" target="_blank"><img src="./images/github.png" alt="Github logo"></a>
+            <h3><a href="https://github.com/RaulUrdanetaG" target="_blank">Raul Urdaneta</a></h3>
+        </div>
     </div>
 
     <script src="./script.js"></script>

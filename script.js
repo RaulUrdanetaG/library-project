@@ -17,13 +17,12 @@ class Book {
     }
 }
 
-function refreshBookShelf(){
-    let allBooks = document.querySelectorAll('.book');
+function refreshBookShelf() {
+    const allBooks = document.querySelectorAll('.book');
 
     allBooks.forEach((e) => {
         e.remove();
-        
-    });    
+    });
 }
 
 function showBooks() {
@@ -39,6 +38,12 @@ function showBooks() {
             newBookPages = document.createElement('h5');
 
         newBook.classList.add('book');
+        newBookDeleteBtn.classList.add('delete-btn');
+        newBookReadBtn.classList.add('read-btn');
+
+        if (library[i].read === true) {
+            newBook.classList.add('read-check');
+        } else { }
 
         newBookTitle.innerText = `${library[i].title}`;
         newBookAuthor.innerText = `${library[i].author}`;
@@ -54,14 +59,45 @@ function showBooks() {
         newBook.appendChild(newBookDeleteBtn);
 
         bookShelf.appendChild(newBook);
-
-        console.log('added');
     }
+
+
+    // Creates an event listener for every delete button created
+    const deleteButton = document.querySelectorAll('.delete-btn');
+
+    deleteButton.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            deleteBook();
+        })
+    })
+
+    // Creates an event listener for every read button created
+    const readButton = document.querySelectorAll('.read-btn');
+
+    readButton.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            toggleRead(index);
+        })
+    })
 }
 
 function addBook(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
     library.push(book);
+    showBooks();
+}
+
+function deleteBook(index) {
+    library.splice(index, 1);
+    showBooks();
+}
+
+function toggleRead(index) {
+    if (library[index].read === true) {
+        library[index].read = false;
+    } else {
+        library[index].read = true;
+    }
     showBooks();
 }
 
@@ -94,6 +130,5 @@ function validateForm(event) {
 
 addBtn.addEventListener('click', (e) => {
     validateForm(e);
-
 })
 
