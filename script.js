@@ -9,11 +9,12 @@ const addBtn = document.getElementById('add-button'),
 let library = [];
 
 class Book {
-    constructor(title, author, pages, read) {
+    constructor(title, author, pages, read, color) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
+        this.color = color;
     }
 }
 
@@ -31,6 +32,10 @@ function showBooks() {
 
     for (let i = 0; i < library.length; i++) {
         let newBook = document.createElement('div'),
+            bookInfoContainer = document.createElement('div'),
+            bookInfo = document.createElement('div'),
+            bookBtns = document.createElement('div'),
+            newBookImg = document.createElement('img'),
             newBookReadBtn = document.createElement('button'),
             newBookDeleteBtn = document.createElement('button'),
             newBookTitle = document.createElement('h3'),
@@ -38,26 +43,41 @@ function showBooks() {
             newBookPages = document.createElement('h5');
 
         newBook.classList.add('book');
+        bookInfoContainer.classList.add('book-info-container')
+        bookInfo.classList.add('book-info');
+        bookBtns.classList.add('book-buttons');
         newBookDeleteBtn.classList.add('delete-btn');
         newBookReadBtn.classList.add('read-btn');
 
+        newBookImg.src = `./images/book${library[i].color}.svg`;
+
         if (library[i].read === true) {
             newBook.classList.add('read-check');
-        } else { }
+            newBookReadBtn.innerText = 'Read';
+        } else {
+            newBookReadBtn.innerText = 'Not Read';
+        }
 
         newBookTitle.innerText = `${library[i].title}`;
         newBookAuthor.innerText = `${library[i].author}`;
-        newBookPages.innerText = `${library[i].pages}`;
+        newBookPages.innerText = `Pages: ${library[i].pages}`;
 
-        newBookReadBtn.innerText = 'Read';
+
         newBookDeleteBtn.innerText = 'Delete'
 
-        newBook.appendChild(newBookTitle);
-        newBook.appendChild(newBookAuthor);
-        newBook.appendChild(newBookPages);
-        newBook.appendChild(newBookReadBtn);
-        newBook.appendChild(newBookDeleteBtn);
+        bookInfo.appendChild(newBookTitle);
+        bookInfo.appendChild(newBookAuthor);
+        bookInfo.appendChild(newBookPages);
 
+        bookInfoContainer.appendChild(newBookImg);
+        bookInfoContainer.appendChild(bookInfo);
+
+        bookBtns.appendChild(newBookReadBtn);
+        bookBtns.appendChild(newBookDeleteBtn);
+
+        newBook.appendChild(bookBtns);
+        newBook.appendChild(bookInfoContainer);
+        
         bookShelf.appendChild(newBook);
     }
 
@@ -67,7 +87,7 @@ function showBooks() {
 
     deleteButton.forEach((button, index) => {
         button.addEventListener('click', () => {
-            deleteBook();
+            deleteBook(index);
         })
     })
 
@@ -81,8 +101,8 @@ function showBooks() {
     })
 }
 
-function addBook(title, author, pages, read) {
-    const book = new Book(title, author, pages, read);
+function addBook(title, author, pages, read, colorNumber) {
+    const book = new Book(title, author, pages, read, colorNumber);
     library.push(book);
     showBooks();
 }
@@ -103,6 +123,7 @@ function toggleRead(index) {
 
 function validateForm(event) {
     event.preventDefault();
+    let bookColorNumber = Math.floor(Math.random() * 4) + 1;
     if (inputTitle.value === '') {
         console.log('Please enter a book name');
     } else {
@@ -120,9 +141,9 @@ function validateForm(event) {
     }
     if (inputTitle.value != '' && inputAuthor.value != '' && inputPages.value != '') {
         if (inputRead.checked) {
-            addBook(inputTitle.value, inputAuthor.value, inputPages.value, true);
+            addBook(inputTitle.value, inputAuthor.value, inputPages.value, true, bookColorNumber);
         } else {
-            addBook(inputTitle.value, inputAuthor.value, inputPages.value, false);
+            addBook(inputTitle.value, inputAuthor.value, inputPages.value, false, bookColorNumber);
         }
         form.reset();
     }

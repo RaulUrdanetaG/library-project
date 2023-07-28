@@ -9,21 +9,45 @@
 <body>
 
     <div class="main-container">
-        <h1>Library</h1>
+        <div class="header">
+            <button class="login-button">Login</button>
+        </div>
         <form id="input-book-form" action="">
-            <input type="text" name="book-name" id="book-name" autocomplete="off" placeholder="Title" required>
-            <input type="text" name="book-author" id="book-author" autocomplete="off" placeholder="Author" required>
-            <input type="number" name="book-pages" id="book-pages" autocomplete="off" placeholder="Number of pages" required>
-            <input type="checkbox" name="book-read" id="book-read">
-            <button id="add-button">Add Book +</button>
+            <h1>Library</h1>
+            <div class="form">
+                <input type="text" name="book-name" id="book-name" autocomplete="off" placeholder="Title" required>
+                <h4>Please enter a title name</h4>
+                <input type="text" name="book-author" id="book-author" autocomplete="off" placeholder="Author" required>
+                <h4>Please enter an author name</h4>
+                <input type="number" name="book-pages" id="book-pages" autocomplete="off" placeholder="Number of pages" required>
+                <h4>Please enter a valid number of pages</h4>
+                <div class="read-box">
+                    <input type="checkbox" name="book-read" id="book-read">
+                    <label for="book-read"> Have you read it?</label>
+                </div>
+                <button id="add-button">Add Book +</button>
+            </div>
+            <div class="creator-info">
+                <h3>Made by </h3>
+                <a href="https://github.com/RaulUrdanetaG" target="_blank"><img src="./images/github.png" alt="Github logo"></a>
+                <h3><a href="https://github.com/RaulUrdanetaG" target="_blank">Raul Urdaneta</a></h3>
+            </div>
         </form>
-        <div class="book-shelf" id="book-shelf">
+        <div class="shelf">
+            <div class="shelf-info">
+                <div>
+                    <h2>Books read:</h2>
+                    <h2>0</h2>
+                </div>
+                <div>
+                    <h2>Books not read:</h2>
+                    <h2>0</h2>
+                </div>
+                <button>Delete All</button>
+            </div>
+            <div class="book-shelf" id="book-shelf"></div>
         </div>
-        <div class="creator-info">
-            <h3>Made by </h3>
-            <a href="https://github.com/RaulUrdanetaG" target="_blank"><img src="./images/github.png" alt="Github logo"></a>
-            <h3><a href="https://github.com/RaulUrdanetaG" target="_blank">Raul Urdaneta</a></h3>
-        </div>
+        
     </div>
 
     <script src="./script.js"></script>
