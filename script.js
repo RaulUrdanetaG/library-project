@@ -5,6 +5,7 @@ const addBtn = document.getElementById('add-button'),
     inputPages = document.getElementById('book-pages'),
     inputRead = document.getElementById('book-read'),
     form = document.getElementById('input-book-form'),
+    deleteBtn = document.querySelector('.delete-button'),
     bookShelf = document.getElementById('book-shelf');
 
 let library = [];
@@ -153,5 +154,9 @@ function validateForm(event) {
 
 addBtn.addEventListener('click', (e) => {
     validateForm(e);
+})
+
+deleteBtn.addEventListener('click', (e)=>{
+    refreshBookShelf(e);
 })
 
