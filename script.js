@@ -1,5 +1,6 @@
 const addBtn = document.getElementById('add-button'),
     inputTitle = document.getElementById('book-name'),
+    invalidMessages = document.querySelectorAll('.invalid'),
     inputAuthor = document.getElementById('book-author'),
     inputPages = document.getElementById('book-pages'),
     inputRead = document.getElementById('book-read'),
@@ -7,6 +8,7 @@ const addBtn = document.getElementById('add-button'),
     bookShelf = document.getElementById('book-shelf');
 
 let library = [];
+let invalid = Array.from(invalidMessages);
 
 class Book {
     constructor(title, author, pages, read, color) {
@@ -125,19 +127,19 @@ function validateForm(event) {
     event.preventDefault();
     let bookColorNumber = Math.floor(Math.random() * 4) + 1;
     if (inputTitle.value === '') {
-        console.log('Please enter a book name');
+        invalid[0].innerHTML = 'Please enter a title name';
     } else {
-
+        invalid[0].innerHTML = '';
     }
     if (inputAuthor.value === '') {
-        console.log('Please enter an author name');
+        invalid[1].innerHTML = 'Please enter an author name';
     } else {
-
+        invalid[1].innerHTML = '';
     }
     if (inputPages.value === '' || inputPages.value.match(/[^1-9]/) || inputPages.value <= 0) {
-        console.log('Please enter a valid number');
+        invalid[2].innerHTML = 'Please enter a valid number of pages';
     } else {
-
+        invalid[2].innerHTML = '';
     }
     if (inputTitle.value != '' && inputAuthor.value != '' && inputPages.value != '') {
         if (inputRead.checked) {
