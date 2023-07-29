@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
     <div class="main-container">
         <div class="header">
-            <button class="login-button">Login</button>
+            <button id="login-button">Login</button>
         </div>
         <form id="input-book-form" action="">
             <h1>Library</h1>
@@ -19,7 +21,8 @@
                 <h4 class="invalid"></h4>
                 <input type="text" name="book-author" id="book-author" autocomplete="off" placeholder="Author" required>
                 <h4 class="invalid"></h4>
-                <input type="number" name="book-pages" id="book-pages" autocomplete="off" placeholder="Number of pages" required>
+                <input type="number" name="book-pages" id="book-pages" autocomplete="off" placeholder="Number of pages"
+                    required>
                 <h4 class="invalid"></h4>
                 <div class="read-box">
                     <input type="checkbox" name="book-read" id="book-read">
@@ -29,7 +32,8 @@
             </div>
             <div class="creator-info">
                 <h3>Made by </h3>
-                <a href="https://github.com/RaulUrdanetaG" target="_blank"><img src="./images/github.png" alt="Github logo"></a>
+                <a href="https://github.com/RaulUrdanetaG" target="_blank"><img src="./images/github.png"
+                        alt="Github logo"></a>
                 <h3><a href="https://github.com/RaulUrdanetaG" target="_blank">Raul Urdaneta</a></h3>
             </div>
         </form>
@@ -47,9 +51,9 @@
             </div>
             <div class="book-shelf" id="book-shelf"></div>
         </div>
-        
-    </div>
 
+    </div>
     <script src="./script.js"></script>
 </body>
+
 </html>
