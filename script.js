@@ -202,5 +202,9 @@ const restoreLocal = () => {
 }
 
 window.onload = () => {
-    showBooks();
+    if (library === null) {
+        saveLocal();
+    }else{
+        showBooks();
+    }
 }
