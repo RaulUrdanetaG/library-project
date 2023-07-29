@@ -36,8 +36,13 @@ function refreshBookShelf() {
 
 function showBooks() {
 
-    library = retrieveLocal();
     refreshBookShelf();
+
+    if (retrieveLocal() != null) {
+        library = retrieveLocal();
+    }else{
+        
+    }
 
     for (let i = 0; i < library.length; i++) {
         let newBook = document.createElement('div'),
@@ -116,6 +121,7 @@ function showBooks() {
             toggleRead(index);
         })
     })
+    
 }
 
 function addBook(title, author, pages, read, colorNumber) {
