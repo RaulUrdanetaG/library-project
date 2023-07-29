@@ -68,7 +68,7 @@ body {
     background-color: var(--sidebar-color);
 }
 
-.header button{
+.header button {
     position: relative;
     right: 100px;
     font-size: 1.2rem;
@@ -80,7 +80,7 @@ body {
     border-radius: 10px;
 }
 
-.header button:hover{
+.header button:hover {
     cursor: pointer;
     scale: 1.1;
 }
@@ -89,7 +89,7 @@ body {
     margin: 20px;
 }
 
-.delete-button{
+.delete-button {
     background-color: red;
     border: none;
     border-radius: 10px;
@@ -98,7 +98,7 @@ body {
     color: white;
 }
 
-.delete-button:hover{
+.delete-button:hover {
     scale: 1.1;
     cursor: pointer;
 }
@@ -131,18 +131,18 @@ input {
     border-bottom: 2px solid white;
 }
 
-input:valid{
+input:valid {
     color: white;
 }
 
-input:focus{
+input:focus {
     color: white;
     outline: none;
     scale: 1.05;
     transition: 0.3s;
 }
 
-::placeholder{
+::placeholder {
     color: white;
 }
 
@@ -152,7 +152,7 @@ input:focus{
     margin: 30px 0;
 }
 
-#add-button{
+#add-button {
     color: white;
     background-color: var(--sidebar-color);
     border: 2px solid white;
@@ -162,12 +162,12 @@ input:focus{
     font-family: sans-serif;
 }
 
-#add-button:hover{
+#add-button:hover {
     scale: 1.1;
     cursor: pointer;
 }
 
-.invalid{
+.invalid {
     color: rgb(255, 0, 0);
 }
 
@@ -221,10 +221,20 @@ input:focus{
 
 .book-info {
     justify-content: center;
-    margin-right: 30px ;
+    margin-right: 30px;
 }
 
-img {
-    width: 50px;
+.creator-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 
+.creator-info a{
+    text-decoration: none;
+    color: white;
+}
+
+.creator-info img{
+    width: 30px;
 }

@@ -6,10 +6,13 @@ const addBtn = document.getElementById('add-button'),
     inputRead = document.getElementById('book-read'),
     form = document.getElementById('input-book-form'),
     deleteBtn = document.querySelector('.delete-button'),
+    readCounterText = document.querySelector('.read-counter'),
+    notReadCounterText = document.querySelector('.not-read-counter'),
     bookShelf = document.getElementById('book-shelf');
 
 let library = [];
 let invalid = Array.from(invalidMessages);
+let readCounter = 0;
 
 class Book {
     constructor(title, author, pages, read, color) {
@@ -27,6 +30,8 @@ function refreshBookShelf() {
     allBooks.forEach((e) => {
         e.remove();
     });
+
+    readCounter = 0;
 }
 
 function showBooks() {
@@ -82,8 +87,16 @@ function showBooks() {
         newBook.appendChild(bookInfoContainer);
         
         bookShelf.appendChild(newBook);
+
+        if (library[i].read === true) {
+            readCounter += 1;
+        }else{
+            
+        }
     }
 
+    readCounterText.innerHTML = `${readCounter}`;
+    notReadCounterText.innerHTML = `${(library.length)-readCounter}`;
 
     // Creates an event listener for every delete button created
     const deleteButton = document.querySelectorAll('.delete-btn');
@@ -142,7 +155,7 @@ function validateForm(event) {
     } else {
         invalid[2].innerHTML = '';
     }
-    if (inputTitle.value != '' && inputAuthor.value != '' && inputPages.value != '') {
+    if (inputTitle.value != '' && inputAuthor.value != '' && inputPages.value != '' && !inputPages.value.match(/[^1-9]/) && inputPages.value > 0) {
         if (inputRead.checked) {
             addBook(inputTitle.value, inputAuthor.value, inputPages.value, true, bookColorNumber);
         } else {
@@ -158,5 +171,7 @@ addBtn.addEventListener('click', (e) => {
 
 deleteBtn.addEventListener('click', (e)=>{
     refreshBookShelf(e);
+    readCounterText.innerHTML = `0`;
+    notReadCounterText.innerHTML = `0`;
 })
 
