@@ -36,6 +36,7 @@ function refreshBookShelf() {
 
 function showBooks() {
 
+    library = retrieveLocal();
     refreshBookShelf();
 
     for (let i = 0; i < library.length; i++) {
@@ -85,18 +86,18 @@ function showBooks() {
 
         newBook.appendChild(bookBtns);
         newBook.appendChild(bookInfoContainer);
-        
+
         bookShelf.appendChild(newBook);
 
         if (library[i].read === true) {
             readCounter += 1;
-        }else{
-            
+        } else {
+
         }
     }
 
     readCounterText.innerHTML = `${readCounter}`;
-    notReadCounterText.innerHTML = `${(library.length)-readCounter}`;
+    notReadCounterText.innerHTML = `${(library.length) - readCounter}`;
 
     // Creates an event listener for every delete button created
     const deleteButton = document.querySelectorAll('.delete-btn');
@@ -120,11 +121,13 @@ function showBooks() {
 function addBook(title, author, pages, read, colorNumber) {
     const book = new Book(title, author, pages, read, colorNumber);
     library.push(book);
+    saveLocal();
     showBooks();
 }
 
 function deleteBook(index) {
     library.splice(index, 1);
+    saveLocal();
     showBooks();
 }
 
@@ -134,6 +137,7 @@ function toggleRead(index) {
     } else {
         library[index].read = true;
     }
+    saveLocal();
     showBooks();
 }
 
@@ -150,12 +154,12 @@ function validateForm(event) {
     } else {
         invalid[1].innerHTML = '';
     }
-    if (inputPages.value === '' || inputPages.value.match(/[^1-9]/) || inputPages.value <= 0) {
+    if (inputPages.value === '' || inputPages.value <= 0) {
         invalid[2].innerHTML = 'Please enter a valid number of pages';
     } else {
         invalid[2].innerHTML = '';
     }
-    if (inputTitle.value != '' && inputAuthor.value != '' && inputPages.value != '' && !inputPages.value.match(/[^1-9]/) && inputPages.value > 0) {
+    if (inputTitle.value != '' && inputAuthor.value != '' && inputPages.value != '' && inputPages.value > 0) {
         if (inputRead.checked) {
             addBook(inputTitle.value, inputAuthor.value, inputPages.value, true, bookColorNumber);
         } else {
@@ -163,15 +167,40 @@ function validateForm(event) {
         }
         form.reset();
     }
+
 }
 
 addBtn.addEventListener('click', (e) => {
     validateForm(e);
 })
 
-deleteBtn.addEventListener('click', (e)=>{
+deleteBtn.addEventListener('click', (e) => {
     refreshBookShelf(e);
+    library = [];
+    saveLocal();
     readCounterText.innerHTML = `0`;
     notReadCounterText.innerHTML = `0`;
-})
+});
 
+// Local storage
+
+function saveLocal() {
+    localStorage.setItem('library', JSON.stringify(library));
+}
+
+function retrieveLocal() {
+    return JSON.parse(localStorage.getItem('library'));
+}
+
+const restoreLocal = () => {
+    const books = JSON.parse(localStorage.getItem('library'))
+    if (books) {
+        library = books.map((book) => JSONToBook(book))
+    } else {
+        library = []
+    }
+}
+
+window.onload = () => {
+    showBooks();
+}
