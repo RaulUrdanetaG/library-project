@@ -5,7 +5,7 @@ const addBtn = document.getElementById('add-button'),
     inputPages = document.getElementById('book-pages'),
     inputRead = document.getElementById('book-read'),
     form = document.getElementById('input-book-form'),
-    deleteBtn = document.querySelector('.delete-button'),
+    deleteBtn = document.querySelector('#delete-button'),
     readCounterText = document.querySelector('.read-counter'),
     notReadCounterText = document.querySelector('.not-read-counter'),
     bookShelf = document.getElementById('book-shelf');
@@ -67,8 +67,12 @@ function showBooks() {
 
         if (library[i].read === true) {
             newBook.classList.add('read-check');
+            newBookReadBtn.classList.add('read');
+            newBookReadBtn.classList.remove('not-read');
             newBookReadBtn.innerText = 'Read';
         } else {
+            newBookReadBtn.classList.remove('read');
+            newBookReadBtn.classList.add('not-read');
             newBookReadBtn.innerText = 'Not Read';
         }
 

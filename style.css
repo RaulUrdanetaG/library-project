@@ -3,6 +3,9 @@
     --shelf-sceondary-color: #BC6F41;
     --shelf-background: #7F3613;
     --sidebar-color: #7E57C2;
+    --read-btn-color: #9BC53D;
+    --not-read-btn-clor: #F46036;
+    --delete-btn-color: #C1292E;
     --bacckground-color: #C9D6EA;
     --add-button-color: #688B58;
 }
@@ -89,8 +92,8 @@ body {
     margin: 20px;
 }
 
-.delete-button {
-    background-color: red;
+#delete-button {
+    background-color: var(--delete-btn-color);
     border: none;
     border-radius: 10px;
     padding: 10px;
@@ -98,7 +101,7 @@ body {
     color: white;
 }
 
-.delete-button:hover {
+#delete-button:hover {
     scale: 1.1;
     cursor: pointer;
 }
@@ -230,11 +233,46 @@ input:focus {
     gap: 5px;
 }
 
-.creator-info a{
+.creator-info a {
     text-decoration: none;
     color: white;
 }
 
-.creator-info img{
+.creator-info img {
     width: 30px;
+}
+
+.read {
+    background-color: var(--add-button-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+}
+
+.not-read {
+    background-color: var(--not-read-btn-clor);
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+}
+
+.read:hover,
+.not-read:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.delete-btn {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    background-color: var(--delete-btn-color);
+}
+
+.delete-btn:hover {
+    scale: 1.1;
+    cursor: pointer;
 }
