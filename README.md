@@ -11,3 +11,5 @@
 - Set up local storage for the first time.
 - Created a function to save object info into the local storage.
 - Created a function to retrieve the info in local storage.
+
+[Live Preview](https://raulurdanetag.github.io/library-project/) 👈
